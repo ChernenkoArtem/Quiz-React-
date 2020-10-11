@@ -1,0 +1,12 @@
+.Nav {
+  display: flex;
+  & li {
+    margin-right: 20px;
+    list-style: none;
+    font-size: 20px;
+    color: #7969e6;
+    a {
+      text-decoration: none;
+    }
+  }
+}

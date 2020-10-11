@@ -1,0 +1,26 @@
+.FinishedWrapper{
+  border: 2px solid white;
+  border-radius: 5px;
+  padding:5px 10px;
+  margin-bottom: 10px;
+  color: white;
+}
+.btnRepeat{
+  padding: 10px 20px;
+  color: white;
+  background: orange;
+  outline: none;
+  cursor: pointer;
+  font-size: 17px;
+  border: none;
+  transition: opacity linear .3s;
+  &:hover{
+    opacity: .8;
+  }
+}
+.trueAnswer {
+  color: green;
+}
+.falseAnswer{
+  color: red;
+}
