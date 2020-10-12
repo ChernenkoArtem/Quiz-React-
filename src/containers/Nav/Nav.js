@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom"
 const MenuState = {
   nav: [{linkName:'список', url:'/', exact: true},
     {linkName:'quiz-creator', url:'/quiz-creator', exact: true},
-    {linkName:'test', url:'/test', exact: true}]
+    {linkName:'Авторизация', url:'/auth', exact: true}]
 }
 
 const Nav =()=> {

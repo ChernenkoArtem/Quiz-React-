@@ -1,4 +1,5 @@
 import React from "react"
+import {Link} from "react-router-dom"
 import './FinishedQuiz.scss'
 
 export default (props) => {
@@ -18,15 +19,18 @@ export default (props) => {
             </li>
           )
       })}
-      {/*<ul>*/}
-      {/*  <li className={'trueAswer'}>*/}
-      {/*    <strong>1.</strong>*/}
-      {/*    32132*/}
-      {/*  </li>*/}
-      {/*</ul>*/}
       </ul>
       <p>правильно {answerCount} из {props.quiz.length}</p>
       <button className={'btnRepeat'} onClick={props.returnQuiz}>Повторить</button>
+      <Link to={'/'}>
+        <button style={{padding : '10px 20px',
+          fontSize: '17px',
+          background: 'green',
+          color: '#fff',
+          cursor: 'pointer',
+          marginLeft: '40px'}}
+        >Список тестов</button>
+      </Link>
     </div>
   )
 }
