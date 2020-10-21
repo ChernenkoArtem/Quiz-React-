@@ -3,12 +3,13 @@ import "./Auth.scss"
 import Input from "../../components/UI/Input/Input"
 
 function validateEmail(email) {
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
 
 export default class Auth extends Component {
   state = {
+    isFormValid: false,
     formControls: {
       email: {
         value: '',
@@ -66,14 +67,19 @@ export default class Auth extends Component {
 
     const formControls = {...this.state.formControls}
     const control = {...formControls[controlName]}
-    console.log(control)
+
     control.value = e.target.value
     control.touched = true
     control.valid = this.validateControl(control.value, control.validation)
 
     formControls[controlName] = control
+    let isFormValid = true
+    Object.keys(formControls).forEach(name => {
+      isFormValid = formControls[name].valid && isFormValid
+    })
     this.setState({
-        formControls
+        formControls,
+        isFormValid
     }
     )
 }
@@ -111,13 +117,16 @@ export default class Auth extends Component {
                   color: '#fff',
                   cursor: 'pointer',
                   }}
-                  type={'success'} onClick={this.loginHandler}>Войти</button>
+                  disabled={!this.state.isFormValid}
+                  type={'success'}
+                  onClick={this.loginHandler}>Войти</button>
                 <button style={{padding : '10px 20px',
                   fontSize: '17px',
                   background: 'orange',
                   color: '#fff',
                   cursor: 'pointer',
                   }}
+                  disabled={!this.state.isFormValid}
                   onClick={this.registerHandler}>Зарегестрироваться</button>
               </form>
             </div>
